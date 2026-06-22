@@ -1,0 +1,33 @@
+(socai-env) vijay@ubuntu:~$ python3 socai.py
+
+--- SOC AI RESPONSE ---
+
+**Analysis**
+
+Based on the Wazuh security alert, I'll provide an analysis of the situation.
+
+**Severity: Medium**
+
+The severity level is set to Medium because multiple failed SSH login attempts can indicate a brute-force attack or an attempt to gain unauthorized access to the system. While it's not immediately catastrophic, it warrants further investigation and mitigation efforts.
+
+**Attack explanation:**
+
+A malicious actor is attempting to guess or crack the SSH login credentials of the target system (DESKTOP-D30007T). This can be done through a variety of means, such as password cracking tools or brute-force attacks. The goal is likely to gain unauthorized access to the system, potentially leading to data theft, malware deployment, or other malicious activities.
+
+**Possible MITRE ATT&CK mapping:**
+
+This alert aligns with the following MITRE ATT&CK tactics and techniques:
+
+* **T1056**: Input Validity Checking (attempting to guess or crack login credentials)
+* **T1550**: Use of Service (exploiting the SSH service for malicious purposes)
+
+**Recommended actions:**
+
+1. **Investigate the source IP address:** Identify the IP addresses attempting to connect to the system and analyze their behavior. This can help determine if the attack is coming from a known entity or a malicious actor.
+2. **Implement rate limiting:** Configure your SSH server to limit the number of login attempts within a certain time frame, making it more difficult for attackers to guess passwords through brute-force methods.
+3. **Monitor system logs:** Continuously monitor system logs and Wazuh alerts for similar incidents, which can indicate an ongoing attack or a targeted campaign.
+4. **Enforce strong password policies:** Ensure that users are using strong, unique passwords for SSH login credentials and consider implementing additional authentication factors (e.g., two-factor authentication).
+5. **Update security measures:** Consider enhancing your security posture by enabling additional security features, such as IP blocking, account lockout policies, or even SSH key-based authentication.
+6. **Notify affected users:** If the alert indicates a specific user's credentials are being targeted, notify them and advise on password reset procedures.
+
+Keep in mind that this analysis is based solely on the provided Wazuh alert, and further investigation may be necessary to determine the root cause of the issue and prevent future incidents.
