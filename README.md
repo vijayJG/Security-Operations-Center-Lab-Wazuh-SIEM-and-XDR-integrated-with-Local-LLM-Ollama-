@@ -19,7 +19,7 @@ MITRE ATT&CK mapping
 Recommended remediation steps
 
 
-🏗️ Architecture
+--> Architecture
                      ┌────────────────────────┐
                      │   Windows Host        │
                      │------------------------│
@@ -43,37 +43,37 @@ Recommended remediation steps
                      Windows Agent (Endpoint)
 
                      
-⚙️ Tools & Technologies Used
+--> Tools & Technologies Used
 
 
-🛡️ Security Stack
+> Security Stack
 Wazuh SIEM (4.x)
 Windows Event Logging
 File Integrity Monitoring (FIM)
 Syscollector & Rootcheck
 
 
-🤖 AI Stack
+> AI Stack
 Ollama
 Llama 3.1 8B (Q4_K_M quantized model)
 REST API inference
 
 
-💻 Infrastructure
+> Infrastructure
 Oracle VirtualBox
 Ubuntu Server 22.04
 Windows 10 Host Machine
 NAT + Host-only networking
 
 
-🐍 Development
+> Development
 Python 3
 Requests library
 Bash scripting
 PowerShell (Windows configuration)
 
 
-🚀 Features
+> Features
 ✔ Real-time Security Monitoring
 File integrity detection
 Windows event log analysis
@@ -89,14 +89,16 @@ API-based communication
 
 
 
-⚙️ Windows Setup Script (PowerShell)
+> Windows Setup Script (PowerShell)
 # Allow Ollama access from network
 New-NetFirewallRule -DisplayName "SOCAI Ollama Access" `
 -Direction Inbound `
 -Protocol TCP `
 -LocalPort 11434 `
 -Action Allow
-🐧 Ubuntu Setup Script (Wazuh Agent)
+
+
+> Ubuntu Setup Script (Wazuh Agent)
 # Install dependencies
 sudo apt update
 
@@ -106,12 +108,17 @@ pip install requests
 
 # Check Wazuh agent status
 sudo systemctl status wazuh-agent
-🧪 API Testing Commands
+
+
+> API Testing Commands
 Windows → Check Ollama
 curl http://127.0.0.1:11434/api/tags
 Ubuntu → Check LAN access
 curl http://192.168.0.10:11434/api/tags
-⚠️ Challenges Faced & Solutions
+
+
+
+> Challenges Faced & Solutions
 ❌ Issue 1: Ollama only accessible via localhost
 
 Problem: API not reachable from Ubuntu VM
