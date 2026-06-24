@@ -20,28 +20,26 @@ Recommended remediation steps
 
 
 --> Architecture
-                     ┌────────────────────────┐
-                     │   Windows Host        │
-                     │------------------------│
-                     │ Ollama LLM Server     │
-                     │ llama3.1:8b           │
-                     │ Port: 11434           │
-                     └─────────┬──────────────┘
-                               │ HTTP API
-                               │ (LAN Access)
-                               ▼
-┌────────────────────────────────────────────────────┐
-│              Ubuntu 22.04 VM (VirtualBox)         │
-│----------------------------------------------------│
-│ Wazuh Manager                                      │
-│ Wazuh Dashboard                                    │
-│ Wazuh API                                          │
-│ Python SOC-AI Engine                               │
-└────────────────────────────────────────────────────┘
-                               ▲
-                               │
-                     Windows Agent (Endpoint)
+                   ```mermaid
+flowchart TD
 
+    A["Windows Host
+    • Ollama LLM Server
+    • Model: llama3.1:8b
+    • Port: 11434"]
+
+    B["Ubuntu 22.04 VM (VirtualBox)
+    • Wazuh Manager
+    • Wazuh Dashboard
+    • Wazuh API
+    • Python SOC-AI Engine"]
+
+    C["Windows Endpoint
+    • Wazuh Agent"]
+
+    A -->|HTTP API (LAN Access)| B
+    C -->|Endpoint Events| B
+```
                      
 --> Tools & Technologies Used
 
@@ -63,7 +61,7 @@ REST API inference
 Oracle VirtualBox
 Ubuntu Server 22.04
 Windows 10 Host Machine
-NAT + Host-only networking
+Bridged Adapter
 
 
 > Development
